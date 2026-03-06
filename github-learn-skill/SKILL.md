@@ -1,6 +1,6 @@
 ---
-name: github_learn_analysis/code_analysis
-description: 从github仓库(已下载到本地)学习知识 制作教科书/包含代码骨架分析和目录结构脚本 也可以用于代码分析
+name: github-learn-skill
+description: 从github仓库(已下载到本地)学习知识 制作教科书/代码骨架分析/目录结构扫描/代码结构分析 支持Python/JS/TS (user)
 ---
 
 # 功能概述

@@ -1,6 +1,6 @@
 ---
-name: comfyui-workflow
-description: "创建/编辑comfyui工作流"
+name: comfyui-workflow-skill
+description: "创建/编辑comfyui工作流、查询ComfyUI节点信息、扫描已安装节点、查找节点用法 (user)"
 ---
 
 
