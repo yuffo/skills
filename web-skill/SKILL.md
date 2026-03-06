@@ -1,5 +1,5 @@
 ---
-name: web-extract
+name: web-skill
 description: 网页提取,替代内置web-fetch
 ---
 
@@ -7,7 +7,7 @@ description: 网页提取,替代内置web-fetch
 
 ## 描述
 codebuddy的内置web-fetch工具会返回网页文本内容(更少token) 但是访问失败时会返回原始网页内容导致token消耗
-此工具为解决此问题设计 此工具脚本会附带页面文本以及超链接和部分格式内容 读取文档页面时 首次默认调用  获取菜单超链接   使用 -s 跳过菜单 只显示正文
+此工具为解决此问题设计 此工具脚本会附带页面文本以及超链接和部分格式内容 
 
 ## 使用方法
 
@@ -34,6 +34,11 @@ python web_extract.py <URL> [选项]
 python web_extract.py https://www.codebuddy.cn/docs/ide/Account/credits
 # 跳过菜单，只提取正文（更节约token）
 python web_extract.py https://example.com -s
+
+# 文档查阅流程:
+#  1. 首次查阅 不跳过菜单 获取文档菜单
+#  2. 根据菜单选择合适文档地址 跳过菜单 加 -s 参阅文档
+
 # 增加字符限制 默认20000
 python web_extract.py https://example.com -l 50000
 # 增加等待时间（适合慢加载页面）

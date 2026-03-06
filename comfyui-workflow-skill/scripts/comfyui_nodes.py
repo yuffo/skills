@@ -9,10 +9,21 @@ ComfyUI 节点查询工具
     python comfyui_nodes.py search <关键词>    # 搜索节点
 """
 
+import os
+import sys
+
+# Windows控制台UTF-8编码（必须在其他导入之前）
+if sys.platform == "win32":
+    os.environ["PYTHONIOENCODING"] = "utf-8"
+    import io
+    if hasattr(sys.stdout, 'buffer'):
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, 'buffer'):
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 import argparse
 import ast
 import json
-import os
 import re
 from pathlib import Path
 from typing import Optional
@@ -201,6 +212,10 @@ class ComfyUINodesScanner:
                     if candidate.exists() and candidate.stat().st_size > 50000:  # nodes.py 通常 > 50KB
                         return candidate
                     candidate = subdir / "ComfyUI" / "nodes.py"
+                    if candidate.exists() and candidate.stat().st_size > 50000:
+                        return candidate
+                    # ComfyUI 官方客户端结构: resources/ComfyUI/nodes.py
+                    candidate = subdir / "resources" / "ComfyUI" / "nodes.py"
                     if candidate.exists() and candidate.stat().st_size > 50000:
                         return candidate
         
